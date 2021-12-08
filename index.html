@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="utf-8">
+    <title>쇼핑몰 이동 중</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+          temp = params[i].split("=");
+          if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+      }
+      var id = getParam('id');
+
+      var urlById = {
+        1: 'https://coupa.ng/caRkJT', // 상품명
+        2: 'https://coupa.ng/caRqEz', // 상품명
+        3: 'https://coupa.ng/caRsu6', // 상품명
+        4: 'https://coupa.ng/caR5gj', // 상품명
+        5: 'https://coupa.ng/caR5U5', // LG 세탁기
+        6: 'https://coupa.ng/caVWbE', // 에코체
+        7: '', // 상품명
+        8: '', // 상품명
+        9: '', // 상품명
+      };
+
+      var url = urlById[Number(id)];
+      if (!!url) {
+        setTimeout(function() {
+          window.location = url;
+        }, 4000);
+      }
+    </script>
+
+
+    <style>
+      body {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        width: 100%;
+      }
+
+      .loading {
+        text-align: center;
+        margin: 0 auto 32px;
+        display: block;
+        width: 100px;
+      }
+
+      .description {
+        margin: 0 auto;
+        display: block;
+        width: calc(100% - 24px);
+        max-width: 332px;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="loading" src="./loading.gif" />
+    <img class="description" src="./description.png" />
+  </body>
+</html>
